@@ -17,3 +17,23 @@ const actions = {
     store.setState({ counter });
   },
 };
+
+const useGlobal = useGlobalHook(React, initialState, actions);
+
+const App = () => {
+  const [globalState, globalActions] = useGlobal();
+  return (
+    <div>
+      <p>
+        counter:
+        {globalState.counter}
+      </p>
+      <button type="button" onClick={() => globalActions.addToCounter(1)}>
+        +1 to global
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
